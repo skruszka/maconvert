@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 
 <div style="text-align: center;">
-  maconvert.svg
+  <img src="maconvert.svg">
 </div>
 
 <br />
@@ -60,11 +60,10 @@ To change between the different mac address formats, like cisco and posix, this 
 ## Features
 
 - Automatically reads and validates a MAC address from the clipboard.
-- Supports multiple MAC address formats:
-
--- POSIX format: aa:bb:cc:dd:ee:ff
--- Windows NT format: AA-BB-CC-DD-EE-FF
--- Cisco format: aabb.ccdd.eeff
+- Supports multiple MAC address formats
+ - POSIX format: aa:bb:cc:dd:ee:ff
+ - Windows NT format: AA-BB-CC-DD-EE-FF
+ - Cisco format: aabb.ccdd.eeff
 
 Simple GUI with buttons to copy the desired format to the clipboard.
 Displays an error message if the clipboard does not contain a valid MAC address.
