@@ -4,9 +4,9 @@
 
 <!-- PROJECT LOGO -->
 
-<div style="text-align: center;">
+<p align="center">
   <img src="maconvert.svg">
-</div>
+</p>
 
 <br />
 <div align="center">
