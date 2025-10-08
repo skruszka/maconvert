@@ -36,7 +36,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
 	<li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -75,7 +74,7 @@ Displays an error message if the clipboard does not contain a valid MAC address.
 
 ```bash
 
-git clone https://github.com/KRUS122/maconvert.git
+git clone https://github.com/skruszka/maconvert.git
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -88,7 +87,7 @@ pyperclip
 
 Install dependencies via pip:
 ```
-pip install wxPython pyperclip
+pip install -r requirements.txt
 ```
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -98,13 +97,6 @@ pip install wxPython pyperclip
 python maconvert.pyw
 ```
 Use a hotkey binding e.g. CTRL + ALT + M to start maconvert easy if it is needed
-
-<!-- ROADMAP -->
-## Roadmap
-
-These are not the features you are looking for!
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
