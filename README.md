@@ -88,7 +88,8 @@ wxPython
 pyperclip
 
 Install dependencies via pip:
-```pip install wxPython pyperclip
+```
+pip install wxPython pyperclip
 ```
 <!-- USAGE EXAMPLES -->
 ## Usage
