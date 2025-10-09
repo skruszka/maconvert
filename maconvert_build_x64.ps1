@@ -1,3 +1,14 @@
+# Declaration of variables
+$projectPath = "C:\maconvert"
+$specFile = Join-Path $projectPath "maconvert.spec"
+$dllTargetDir = Join-Path $projectPath "dlls"
+
+# Create DLL target folder
+if (!(Test-Path $dllTargetDir)) {
+    New-Item -ItemType Directory -Path $dllTargetDir | Out-Null
+}
+
+
 # Install Python
 Write-Host "Downloading Python..."
 Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.11.6/python-3.11.6-amd64.exe" -OutFile "$env:TEMP\python-installer.exe"
@@ -34,7 +45,7 @@ Write-Host "Cloning Git repository maconvert..."
 git clone https://github.com/skruszka/maconvert.git C:\maconvert
 
 # Navigate to the project directory
-Set-Location "C:\maconvert"
+Set-Location $projectPath
 
 # Install dependencies
 pip install -r requirements.txt
