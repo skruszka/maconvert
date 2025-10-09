@@ -3,12 +3,6 @@ $projectPath = "C:\maconvert"
 $specFile = Join-Path $projectPath "maconvert.spec"
 $dllTargetDir = Join-Path $projectPath "dlls"
 
-# Create DLL target folder
-if (!(Test-Path $dllTargetDir)) {
-    New-Item -ItemType Directory -Path $dllTargetDir | Out-Null
-}
-
-
 # Install Python
 Write-Host "Downloading Python..."
 Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.11.6/python-3.11.6-amd64.exe" -OutFile "$env:TEMP\python-installer.exe"
@@ -16,6 +10,10 @@ Start-Process "$env:TEMP\python-installer.exe" -ArgumentList "/quiet InstallAllU
 
 # Add Python Scripts to PATH
 $env:Path += ";C:\Program Files\Python311\Scripts"
+
+# Update python pip
+Write-Host "Updating Python pip..."
+python.exe -m pip install --upgrade pip
 
 # Install Git
 Write-Host "Downloading Git..."
@@ -30,11 +28,10 @@ Write-Host "Installing Python modules..."
 pip install setuptools wheel
 pip install pyinstaller
 
+Write-Host "Downloading VC++ Redistributable..."
 # Download the latest VC++ Redistributable (Visual Studio 2015-2022)
 $vcUrl = "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 $vcInstaller = "$env:TEMP\vc_redist.x64.exe"
-
-Write-Host "Downloading VC++ Redistributable..."
 Invoke-WebRequest -Uri $vcUrl -OutFile $vcInstaller
 
 Write-Host "Starting silent installation..."
@@ -42,7 +39,12 @@ Start-Process -FilePath $vcInstaller -ArgumentList "/install", "/quiet", "/nores
 
 # Clone the Git repository
 Write-Host "Cloning Git repository maconvert..."
-git clone https://github.com/skruszka/maconvert.git C:\maconvert
+git.exe clone https://github.com/skruszka/maconvert.git C:\maconvert
+
+# Create DLL target folder
+if (!(Test-Path $dllTargetDir)) {
+    New-Item -ItemType Directory -Path $dllTargetDir | Out-Null
+}
 
 # Navigate to the project directory
 Set-Location $projectPath
