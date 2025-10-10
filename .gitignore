@@ -5,3 +5,4 @@ dist/
 
 # Ignore all files with the .spec extension
 *.spec
+**/*.mo
