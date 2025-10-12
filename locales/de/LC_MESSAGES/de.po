@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de\n"
+
+msgid "msgid_title"
+msgstr "maconvert"
+
+msgid "msgid_format"
+msgstr "Wähle ein Format zum Kopieren in den Zwischenspeicher:"
+
+msgid "msgid_exit"
+msgstr "Beenden"
+
+msgid "msgid_notvalid"
+msgstr "Keine gültige MAC-Adresse in der Zwischenablage gefunden."
+
+msgid "msgid_error"
+msgstr "Fehler"

@@ -2,6 +2,7 @@
 build/
 dlls/
 dist/
+venv/
 
 # Ignore all files with the .spec extension
 *.spec

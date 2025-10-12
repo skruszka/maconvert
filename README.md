@@ -80,18 +80,23 @@ git clone https://github.com/skruszka/maconvert.git
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Requirements -->
-## Requirements (Linux)
-
-Python 3.x
-wxPython
-pyperclip
+### Requirements (Linux)
+- xclip / wl-clipboard
+- Python 3.x
+ - wxPython
+ - pyperclip
 
 Install dependencies via pip:
 ```
 pip install -r requirements.txt
 ```
+Install dependencies in Ubuntu (24.04/noble)
+```bash
+sudo apt update
+sudo apt install python3 python3-wxgtk4.0 python3-pyperclip xclip
+```
 
-## Requirements (Windows)
+### Requirements (Windows)
 
 To build and run maconvert on Windows, make sure the following components are installed:
 

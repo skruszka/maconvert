@@ -1,7 +1,28 @@
 import wx
 import pyperclip
 import re
+import gettext
+import locale
+import os
 
+def setup_translation():
+    locale.setlocale(locale.LC_ALL, '')
+    
+    lang_tuple = locale.getlocale()
+    language_code = lang_tuple[0].split('_')[0] if lang_tuple and lang_tuple[0] else 'en'
+
+    locales_dir = os.path.join(os.path.dirname(__file__), 'locales')
+
+    try:
+        translation = gettext.translation('messages', locales_dir, languages=[language_code])
+        translation.install()
+        _ = translation.gettext
+    except FileNotFoundError:
+        translation = gettext.translation('messages', locales_dir, languages=['en'])
+        translation.install()
+        _ = translation.gettext
+
+    return _
 def read_clipboard():
     clipboard_in = pyperclip.paste().strip()
     mac_regex = r"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$|^([0-9a-fA-F]{4}\.[0-9a-fA-F]{4}\.[0-9a-fA-F]{4})$|^([0-9a-fA-F]{12})$"
@@ -18,11 +39,11 @@ def create_mac(mac_in):
 
 class MacFormatter(wx.Frame):
     def __init__(self, mac_in, mac_out):
-        super().__init__(None, title="MAC Formatierer", size=(300, 250))
+        super().__init__(None, title=_("msgid_title"), size=(400, 250))
         panel = wx.Panel(self)
         vbox = wx.BoxSizer(wx.VERTICAL)
 
-        label = wx.StaticText(panel, label="Wähle ein Format zum Kopieren:")
+        label = wx.StaticText(panel, label=_("msgid_format"))
         vbox.Add(label, flag=wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, border=10)
 
         buttons = [
@@ -30,7 +51,7 @@ class MacFormatter(wx.Frame):
             (mac_out[0], mac_out[0]),
             (mac_out[1], mac_out[1]),
             (mac_out[2], mac_out[2]),
-            ("Exit", None)
+            (_("msgid_exit"), None)
         ]
 
         for label, value in buttons:
@@ -50,10 +71,12 @@ class MacFormatter(wx.Frame):
         self.Close()
 
 def main():
+    _ = setup_translation()
+
     mac_in = read_clipboard()
     if not mac_in:
         app = wx.App(False)
-        wx.MessageBox("Keine gültige MAC-Adresse in der Zwischenablage gefunden.", "Fehler", wx.OK | wx.ICON_ERROR)
+        wx.MessageBox(_("msgid_notvalid"), _("msgid_error"), wx.OK | wx.ICON_ERROR)
         return
 
     mac_out = create_mac(mac_in)
